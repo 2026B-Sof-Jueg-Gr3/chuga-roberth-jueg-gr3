@@ -1,15 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
     margin: 0;
     padding: 0;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #000000;
+    overflow: hidden;
+    color: #eef4fa;
+    background:
+        radial-gradient(ellipse at 50% 45%, #172432 0%, #0c121b 48%, #070a10 100%);
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 #app {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#game-container {
+    width: min(100vw, 133.333vh);
+    max-height: 100vh;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    box-shadow: 0 24px 100px rgb(0 0 0 / 55%);
+}
+
+#game-container canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    cursor: default;
+}
+
+@media (max-aspect-ratio: 4 / 3) {
+    #game-container {
+        width: 100vw;
+    }
 }
