@@ -580,13 +580,21 @@ export class Game extends Scene
     updateFinishLine ()
     {
         const progress = Math.max(0, Math.min(1, this.distance / RACE_DISTANCE));
-        const revealStart = 0.85;
+        const revealStart = 0.8;
         const isFinalStretch = progress >= revealStart;
-        this.finishLine.setVisible(isFinalStretch);
+        this.finishLine.setVisible(this.finalStretch);
 
         if (isFinalStretch && !this.finalStretch)
         {
             this.finalStretch = true;
+            this.finishLine.setAlpha(0);
+            this.tweens.add({
+                targets: this.finishLine,
+                alpha: 1,
+                duration: 900,
+                ease: 'Sine.easeOut'
+            });
+            this.finishLine.setVisible(true);
             this.finalStretchStartDistance = this.distance;
             this.finalStretchStartY = this.playerY;
             this.obstacles.forEach((obstacle) => obstacle.view.destroy());
