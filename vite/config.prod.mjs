@@ -17,7 +17,7 @@ const phasermsg = () => {
 }   
 
 export default defineConfig({
-    base: './',
+    base: 'chuga-roberth-jueg-gr3',
     logLevel: 'warn',
     build: {
         rollupOptions: {
